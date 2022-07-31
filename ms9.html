@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p><mark style="background-color:plum">TOPIC:FUNCTIONS</mark></p>
+    <script>
+        function funcalpha(str) {
+            return str.split('').sort().join('');
+        }
+        document.write(funcalpha("webmaster"));
+    </script><br><br>
+    <p><mark style="background-color:plum">TOPIC:INDEXED COLLECTIONS</mark></p>
+    <p><mark style="background-color:plum">FOR EACH ITERATOR</mark></p>
+    <p id="demo"></p>
+    <p><mark style="background-color:plum">FOR ITERATOR</mark></p>
+    <p id="demo1"></p>
+    <script>
+        const array = [10, 20, 30, 40];
+        array.push(50);
+        document.write("The array after push operation is:" + "<br>");
+        document.write(array + "<br>");
+        document.write("The array after pop operation is:" + "<br>");
+        array.pop();
+        document.write(array);
+        var emptytxt = "";
+        var No = [23, 212, 9, 628, 22314];
+        No.forEach(itrtFunction);
+
+        document.getElementById("demo").innerHTML = emptytxt;
+
+        function itrtFunction(value, index, array) {
+            emptytxt = emptytxt + value + "<br>";
+            var numArray = [41, 2, 14, 29, 49];
+            var someOver50 = numArray.some(myFunction);
+
+            document.getElementById("demo1").innerHTML
+                = "Some values over 50 is " + someOver50;
+
+            function myFunction(value, index, array) {
+                return value > 50;
+            }
+        }
+    </script><br><br>
+    <p><mark style="background-color:plum">TOPIC:JSON</mark></p>
+    <script>
+        let text = '{"vehicle":[' + '{ "name": "Toyota Rav4", "engine": "2.5L", "price": 32000 }]}';
+
+        const obj = JSON.parse(text);
+        document.write(obj.vehicle[0].name + " ");
+        document.write(obj.vehicle[0].engine);
+    </script>
+<p><mark style="background-color:plum">TOPIC:ITERARTORS AND GENERATORS</mark></p>
+<script>
+    const unfold = (fn, seed) => {
+  let result = [],
+    val = [null, seed];
+  while ((val = fn(val[1]))) result.push(val[0]);
+  return result;
+};
+var f = n => (n > 50 ? false : [-n, n + 10]);
+document.write(unfold(f, 10));
+</script><br><br>
+<script>
+    //MODULES
+//export keyword
+let area = function (length, breadth) {
+    let a = length * breadth;
+    document.write("Area of the rectangle is " + a + " square unit");
+}
+let perimeter = function (length, breadth) {
+    let p = 2 * (length + breadth);
+    document.write('Perimeter of the rectangle is ' + p + ' unit');
+}
+module.exports = {
+    area,
+    perimeter 
+}
+</script><br><br>
+
+//import keyword
+<script>
+const lib =  require('./library');
+let length = 10;
+let breadth = 5;
+lib.area(length, breadth);
+lib.perimeter(length, breadth);
+</script><br><br>
+//PROMISES
+<script>
+const isPromiseLike = obj =>
+  obj !== null &&
+  (typeof obj === 'object' || typeof obj === 'function') &&
+  typeof obj.then === 'function';
+
+document.write(isPromiseLike({
+  then: function() {
+    return '';
+  }
+})); 
+document.write(isPromiseLike(null));
+document.write(isPromiseLike({}));
+</script>
+</body>
+</html>
